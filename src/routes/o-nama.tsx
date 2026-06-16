@@ -123,8 +123,8 @@ function ONamaPage() {
             Stupite u kontakt
           </p>
           <div className="flex flex-wrap justify-center gap-8">
-            <a href="mailto:hom.jagode@gmail.com" style={{ fontFamily: 'Playfair Display, serif', fontSize: '1.125rem', color: '#FAF7F2', textDecoration: 'none' }}>
-              hom.jagode@gmail.com
+            <a href="mailto:savremenikoreni@gmail.com" style={{ fontFamily: 'Playfair Display, serif', fontSize: '1.125rem', color: '#FAF7F2', textDecoration: 'none' }}>
+              savremenikoreni@gmail.com
             </a>
             <a href="tel:+381603318319" style={{ fontFamily: 'Playfair Display, serif', fontSize: '1.125rem', color: '#FAF7F2', textDecoration: 'none' }}>
               060 331 8319

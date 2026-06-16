@@ -35,12 +35,12 @@ const products: Array<Product> = [
   },
   {
     id: 3,
-    name: 'Pletena torbica "Zlatna nit"',
+    name: 'Pletena torba "Plavi Talas"',
     category: 'torbice',
-    image: '/images/image_3.png',
+    image: '/images/torba_plava.jpg',
     description:
-      'Mala pletena torbica tkana tankim zlatnim nitima — savršen pratilac za večernje izlaske. Ručni rad koji pleni pažnju i ostavlja utisak. Kombinovana s klasičnom haljinom ili modernim outfitom jednako blistavo izgleda.',
-    shortDescription: 'Minijaturna pletena torbica sa zlatnim nitima za posebne prilike.',
+      'Upečatljiva pletena torba u živoj plavoj boji, ručno heklana od T-shirt konca sa zlatnim lancem i metalnom kopčom. Smela nijansa mora i neba daje joj karakter koji se pamti, dok je čvrsta struktura čini praktičnom za svaki dan. Dimenzije 25×22 cm.',
+    shortDescription: 'Ručno pletena plava torba sa zlatnim lancem — boja koja zaustavlja poglede.',
     price: 4200,
     featured: true,
   },
@@ -48,11 +48,12 @@ const products: Array<Product> = [
     id: 4,
     name: 'Torba "Ručni Rad"',
     category: 'torbice',
-    image: '/images/image_4.png',
+    image: '/images/torba_rucnirad_1.jpg',
+    gallery: ['/images/torba_rucnirad_2.jpg', '/images/torba_rucnirad_3.jpg'],
     description:
-      'Raskošna torba načinjena u celosti ručno, s pažljivo odabranim materijalima koji traju godinama. "Ručni Rad" je više od torbice — to je izjava o tome koliko cenite originalnost i veštinu.',
-    shortDescription: 'Luksuzna ručno rađena torba od dugotrajnih prirodnih materijala.',
-    price: 9800,
+      'Raskošna torba načinjena u celosti ručno, sa upletenom drškom u prelivima bele, krem i čokoladne nijanse i ukrasnim resama sa drvenim perlama. Svaki čvor je posveta veštini i strpljenju — komad koji traje godinama i priča priču o originalnosti.',
+    shortDescription: 'Luksuzna ručno rađena torba sa upletenom drškom i resama.',
+    price: 4999,
     featured: false,
   },
   {
@@ -63,7 +64,7 @@ const products: Array<Product> = [
     description:
       'Pleteni kaiševi izrađeni od čiste merino vune — mekani poput prvog prolećnog sunca. Dostupni u zemaljskim tonovima koji savršeno prate svaki garderobni izbor. Ručno rađeni s ljubavlju prema detalju.',
     shortDescription: 'Ručno pleteni kaiševi od čiste merino vune u zemaljskim tonovima.',
-    price: 2400,
+    price: 4999,
     featured: false,
   },
   {
@@ -136,11 +137,35 @@ const products: Array<Product> = [
     id: 12,
     name: 'Torba "Čokolada"',
     category: 'torbice',
-    image: '/images/torba_braon.png',
+    image: '/images/torba_cokolada_1.jpg',
+    gallery: ['/images/torba_cokolada_2.jpg', '/images/torba_cokolada_3.jpg'],
     description:
-      'Torba u toploj braon nijansi, tkana u gustom uzorku koji podstiče na dodir. Zlatni kaiš i metalni detalji daju joj savršen balans između casual i elegantnog stila. Prostrana i praktična — za ženu u pokretu.',
-    shortDescription: 'Pletena braon torba sa zlatnim kaišem — toplina i stil u jednom.',
+      'Torba u toploj braon nijansi, ručno heklana u gustom uzorku koji podstiče na dodir. Zaobljena forma i zlatni metalni detalji daju joj savršen balans između casual i elegantnog stila. Prostrana i praktična — za ženu u pokretu.',
+    shortDescription: 'Pletena braon torba sa zlatnim detaljima — toplina i stil u jednom.',
     price: 5800,
+    featured: false,
+  },
+  {
+    id: 13,
+    name: 'Pletena narukvica',
+    category: 'pleteno',
+    image: '/images/narukvica.jpg',
+    description:
+      'Nežna ručno pletena narukvica od mekanog T-shirt konca u krem nijansi, sa vezicom na mašnu koja se prilagođava svakom zglobu. Mali detalj koji zaokružuje ručno rađen stil — savršena kao poklon ili dodatak vašoj omiljenoj torbici.',
+    shortDescription: 'Ručno pletena krem narukvica sa vezicom — nežan ručno rađen detalj.',
+    price: 799,
+    featured: false,
+  },
+  {
+    id: 14,
+    name: 'Pletena torbica "Cvet"',
+    category: 'torbice',
+    image: '/images/torbica_cvet_1.jpg',
+    gallery: ['/images/torbica_cvet_2.jpg', '/images/torbica_cvet_3.jpg'],
+    description:
+      'Romantična torbica heklana tehnikom „granny square“ u crnoj osnovi sa rascvetalim motivima u nijansama roze i mente. Vezica na mašnu zatvara torbicu, a šareni motivi čine je jedinstvenim komadom koji unosi vedrinu u svaki outfit.',
+    shortDescription: 'Granny-square torbica sa cvetnim motivima — vesela i jedinstvena.',
+    price: 3800,
     featured: false,
   },
 ]

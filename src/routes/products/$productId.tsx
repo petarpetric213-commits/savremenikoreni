@@ -1,7 +1,7 @@
 import { Link, createFileRoute } from '@tanstack/react-router'
 import products from '../../data/products'
 import { useCart } from '@/context/CartContext'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 export const Route = createFileRoute('/products/$productId')({
   component: ProductDetail,
@@ -16,6 +16,16 @@ function ProductDetail() {
   const product = Route.useLoaderData()
   const { addItem, items } = useCart()
   const [added, setAdded] = useState(false)
+
+  const images = [product.image, ...(product.gallery ?? [])]
+  const [activeImage, setActiveImage] = useState(0)
+  const hasMultiple = images.length > 1
+
+  const showImage = (idx: number) => setActiveImage((idx + images.length) % images.length)
+
+  useEffect(() => {
+    setActiveImage(0)
+  }, [product.id])
 
   const inCart = items.find((i) => i.product.id === product.id)
 
@@ -48,21 +58,93 @@ function ProductDetail() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-20">
             {/* Image */}
             <div style={{ position: 'relative' }}>
-              <div style={{ aspectRatio: '4/5', overflow: 'hidden', background: '#F3EDE3' }}>
+              <div style={{ position: 'relative', aspectRatio: '4/5', overflow: 'hidden', background: '#F3EDE3' }}>
                 <img
-                  src={product.image}
-                  alt={product.name}
+                  src={images[activeImage]}
+                  alt={`${product.name} — slika ${activeImage + 1}`}
                   style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
                 />
+
+                {hasMultiple && (
+                  <>
+                    <button
+                      type="button"
+                      aria-label="Prethodna slika"
+                      onClick={() => showImage(activeImage - 1)}
+                      style={{
+                        position: 'absolute', top: '50%', left: '12px', transform: 'translateY(-50%)',
+                        width: '44px', height: '44px', borderRadius: '50%', border: 'none', cursor: 'pointer',
+                        background: 'rgba(30,58,47,0.82)', color: '#FAF7F2', fontSize: '1.25rem', lineHeight: 1,
+                        display: 'flex', alignItems: 'center', justifyContent: 'center',
+                      }}
+                    >
+                      ‹
+                    </button>
+                    <button
+                      type="button"
+                      aria-label="Sledeća slika"
+                      onClick={() => showImage(activeImage + 1)}
+                      style={{
+                        position: 'absolute', top: '50%', right: '12px', transform: 'translateY(-50%)',
+                        width: '44px', height: '44px', borderRadius: '50%', border: 'none', cursor: 'pointer',
+                        background: 'rgba(30,58,47,0.82)', color: '#FAF7F2', fontSize: '1.25rem', lineHeight: 1,
+                        display: 'flex', alignItems: 'center', justifyContent: 'center',
+                      }}
+                    >
+                      ›
+                    </button>
+                    <div style={{
+                      position: 'absolute', bottom: '14px', left: '50%', transform: 'translateX(-50%)',
+                      display: 'flex', gap: '0.4rem',
+                    }}>
+                      {images.map((_, i) => (
+                        <button
+                          key={i}
+                          type="button"
+                          aria-label={`Prikaži sliku ${i + 1}`}
+                          onClick={() => showImage(i)}
+                          style={{
+                            width: '9px', height: '9px', borderRadius: '50%', border: 'none', cursor: 'pointer', padding: 0,
+                            background: i === activeImage ? '#BF9B5E' : 'rgba(250,247,242,0.7)',
+                          }}
+                        />
+                      ))}
+                    </div>
+                  </>
+                )}
+
+                {product.featured && (
+                  <div style={{
+                    position: 'absolute', top: '20px', left: '20px',
+                    background: '#BF9B5E', color: '#FAF7F2',
+                    fontSize: '0.625rem', fontWeight: 600, letterSpacing: '0.12em', textTransform: 'uppercase',
+                    padding: '0.35rem 0.75rem',
+                  }}>
+                    Izdvojeno
+                  </div>
+                )}
               </div>
-              {product.featured && (
-                <div style={{
-                  position: 'absolute', top: '20px', left: '20px',
-                  background: '#BF9B5E', color: '#FAF7F2',
-                  fontSize: '0.625rem', fontWeight: 600, letterSpacing: '0.12em', textTransform: 'uppercase',
-                  padding: '0.35rem 0.75rem',
-                }}>
-                  Izdvojeno
+
+              {hasMultiple && (
+                <div className="flex gap-3" style={{ marginTop: '0.875rem' }}>
+                  {images.map((img, i) => (
+                    <button
+                      key={img}
+                      type="button"
+                      onClick={() => showImage(i)}
+                      style={{
+                        width: '72px', height: '90px', padding: 0, cursor: 'pointer', overflow: 'hidden',
+                        background: '#F3EDE3', flexShrink: 0,
+                        border: i === activeImage ? '2px solid #BF9B5E' : '1px solid #E5DDD3',
+                      }}
+                    >
+                      <img
+                        src={img}
+                        alt={`${product.name} sličica ${i + 1}`}
+                        style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+                      />
+                    </button>
+                  ))}
                 </div>
               )}
             </div>
@@ -128,7 +210,7 @@ function ProductDetail() {
                     style={{ fontSize: '0.8125rem', color: '#1E3A2F', fontWeight: 600, textDecoration: 'none' }}>
                     WhatsApp →
                   </a>
-                  <a href="mailto:hom.jagode@gmail.com"
+                  <a href="mailto:savremenikoreni@gmail.com"
                     style={{ fontSize: '0.8125rem', color: '#1E3A2F', fontWeight: 600, textDecoration: 'none' }}>
                     Email →
                   </a>

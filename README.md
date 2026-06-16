@@ -33,5 +33,5 @@ The site runs on `http://localhost:3000`.
 
 ## Contact Info (embedded in site)
 
-- Email: hom.jagode@gmail.com
+- Email: savremenikoreni@gmail.com
 - Phone: 060 331 8319
