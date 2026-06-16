@@ -168,8 +168,8 @@ function Navigation() {
             <div>
               <div style={{ fontSize: '0.6875rem', letterSpacing: '0.18em', textTransform: 'uppercase', color: '#BF9B5E', marginBottom: '1.25rem', fontWeight: 600 }}>Kontakt</div>
               <div className="flex flex-col gap-3" style={{ color: 'rgba(250,247,242,0.7)', fontSize: '0.9rem' }}>
-                <a href="mailto:hom.jagode@gmail.com" style={{ color: 'rgba(250,247,242,0.7)', textDecoration: 'none' }} className="hover:text-[#BF9B5E] transition-colors">
-                  hom.jagode@gmail.com
+                <a href="mailto:savremenikoreni@gmail.com" style={{ color: 'rgba(250,247,242,0.7)', textDecoration: 'none' }} className="hover:text-[#BF9B5E] transition-colors">
+                  savremenikoreni@gmail.com
                 </a>
                 <a href="tel:+381603318319" style={{ color: 'rgba(250,247,242,0.7)', textDecoration: 'none' }} className="hover:text-[#BF9B5E] transition-colors">
                   060 331 8319

@@ -49,8 +49,8 @@ function KontaktPage() {
                   {
                     icon: '✉',
                     label: 'Email',
-                    value: 'hom.jagode@gmail.com',
-                    href: 'mailto:hom.jagode@gmail.com',
+                    value: 'savremenikoreni@gmail.com',
+                    href: 'mailto:savremenikoreni@gmail.com',
                   },
                   {
                     icon: '☏',

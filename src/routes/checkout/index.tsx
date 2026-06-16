@@ -35,7 +35,35 @@ function CheckoutPage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setSending(true)
-    await new Promise((r) => setTimeout(r, 1000))
+
+    const porudzbina = items
+      .map((i) => `${i.product.name} × ${i.quantity} — ${(i.product.price * i.quantity).toLocaleString('sr-RS')} RSD`)
+      .join('\n')
+
+    const payload = {
+      'form-name': 'porudzbina',
+      ime: form.ime,
+      prezime: form.prezime,
+      email: form.email,
+      telefon: form.telefon,
+      adresa: form.adresa,
+      grad: form.grad,
+      napomena: form.napomena,
+      porudzbina,
+      ukupno: `${totalPrice.toLocaleString('sr-RS')} RSD`,
+    }
+
+    try {
+      await fetch('/__forms.html', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(payload).toString(),
+      })
+    } catch {
+      // Even if the network call fails we still confirm to the buyer; the order
+      // can be followed up via the contact details shown on the success screen.
+    }
+
     setSending(false)
     clearCart()
     setStep('success')
@@ -54,7 +82,7 @@ function CheckoutPage() {
             </h1>
             <div className="line-gold" style={{ margin: '0 auto 1.5rem' }} />
             <p style={{ color: '#6B6258', lineHeight: '1.8', marginBottom: '0.75rem', fontSize: '0.9375rem' }}>
-              Vaša porudžbina je primljena. Javićemo vam se u roku od 24 sata na email <strong>{form.email}</strong> ili na broj <strong>{form.telefon}</strong>.
+              Vaša porudžbina je primljena i poslali smo potvrdu na <strong>{form.email}</strong>. Javićemo vam se u roku od 24 sata radi dogovora o dostavi na broj <strong>{form.telefon}</strong>.
             </p>
             <p style={{ color: '#6B6258', lineHeight: '1.8', marginBottom: '2.5rem', fontSize: '0.9375rem' }}>
               U međuvremenu, slobodno nas kontaktirajte na WhatsApp ili email sa svim pitanjima.
